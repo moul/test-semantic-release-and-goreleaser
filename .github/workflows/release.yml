@@ -13,6 +13,9 @@ jobs:
         name: Checkout
         uses: actions/checkout@master
       -
+        name: Unshallow
+        run: git fetch --prune --unshallow
+      -
         name: Run Semantic Release
         id: semantic
         uses: codfish/semantic-release-action@v1
