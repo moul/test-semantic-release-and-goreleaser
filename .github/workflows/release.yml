@@ -1,13 +1,33 @@
-name: Semantic Release
-
-on: push
+name: Release
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  semantic-release:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: codfish/semantic-release-action@v1
-        if: github.ref == 'refs/heads/master'
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Semantic Release
+        id: semantic
+        uses: codfish/semantic-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Debug
+        run: |
+          echo $RELEASE_VERSION
+          echo $RELEASE_MAJOR
+          echo $RELEASE_MINOR
+          echo $RELEASE_PATCH
+      - name: GoReleaser
+        if: steps.semantic.outputs.new-release-published == 'true'
+        uses: goreleaser/goreleaser-action@v1
+        with:
+          version: latest
+          args: release --rm-dist
+          key: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
