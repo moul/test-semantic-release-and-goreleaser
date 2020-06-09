@@ -71,11 +71,3 @@ nfpms:
     formats:
       - deb
       - rpm
-#snapcrafts:
-#  - name_template: '{{ .ProjectName }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
-#    summary: "test-semantic-release-and-goreleaser"
-#    description: |
-#      test-semantic-release-and-goreleaser
-#    grade: stable
-#    confinement: classic
-#    publish: true
