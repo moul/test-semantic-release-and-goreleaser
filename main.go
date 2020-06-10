@@ -15,7 +15,7 @@ func main() {
 	}
 }
 
-func run(args []string) error {
+func run(_ []string) error {
 	fmt.Print(motd.Default())
 	return nil
 }
