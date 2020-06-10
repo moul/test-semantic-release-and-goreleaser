@@ -8,7 +8,7 @@ import (
 
 func main() {
 	if err := run(os.Args); err != nil {
-		log.Fatalf("error: %v", err)
+		log.Fatalf("error: %v!", err)
 		os.Exit(1)
 	}
 }
