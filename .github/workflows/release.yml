@@ -22,13 +22,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       -
-        name: Debug Semantic Release
-        run: |
-          echo $RELEASE_VERSION
-          echo $RELEASE_MAJOR
-          echo $RELEASE_MINOR
-          echo $RELEASE_PATCH
-      -
         name: Set up Go
         if: steps.semantic.outputs.new-release-published == 'true'
         uses: actions/setup-go@v2
