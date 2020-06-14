@@ -6,6 +6,10 @@ module.exports = {
     ["@semantic-release/exec", {
       "publishCmd": "make _set_version VERSION=${nextRelase.version}"
     }],
+    ["@semantic-release/git", {
+      "assets": ["version.go"],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }],
     '@semantic-release/github',
   ],
 };
